@@ -52,8 +52,8 @@ while IFS= read -r line; do
 	remotepubv4="${v4_looked_up_addr}"
 	echo "  pub4src: \"${localpubv4}\""
 	echo "  pub4dst: \"${remotepubv4}\""
-	/tmp/tun-ip.sh "${tunnelname}" |tr '\n' ' ' | awk '{printf("  ipv4src: \"%s\"\n  ipv6src: \"%s\"\n", $2, $4);}'
-	/tmp/tun-ip.sh "${rhost}-${lhost}" |tr '\n' ' ' | awk '{printf("  ipv4dst: \"%s\"\n  ipv6dst: \"%s\"\n", $2, $4);}'
+	/usr/local/bin/tun-ip.sh "${tunnelname}" |tr '\n' ' ' | awk '{printf("  ipv4src: \"%s\"\n  ipv6src: \"%s\"\n", $2, $4);}'
+	/usr/local/bin/tun-ip.sh "${rhost}-${lhost}" |tr '\n' ' ' | awk '{printf("  ipv4dst: \"%s\"\n  ipv6dst: \"%s\"\n", $2, $4);}'
 	echo "  cost: \"${tunnelcost}\""
 	echo
     elif [ "${rhost}" = "${MYNAME}" ]; then
@@ -63,8 +63,8 @@ while IFS= read -r line; do
 	remotepubv4="${v4_looked_up_addr}"
 	echo "  pub4src: \"${localpubv4}\""
 	echo "  pub4dst: \"${remotepubv4}\""
-	/tmp/tun-ip.sh "${rhost}-${lhost}" |tr '\n' ' ' | awk '{printf("  ipv4src: \"%s\"\n  ipv6src: \"%s\"\n", $2, $4);}'
-	/tmp/tun-ip.sh "${tunnelname}" |tr '\n' ' ' | awk '{printf("  ipv4dst: \"%s\"\n  ipv6dst: \"%s\"\n", $2, $4);}'
+	/usr/local/bin/tun-ip.sh "${rhost}-${lhost}" |tr '\n' ' ' | awk '{printf("  ipv4src: \"%s\"\n  ipv6src: \"%s\"\n", $2, $4);}'
+	/usr/local/bin/tun-ip.sh "${tunnelname}" |tr '\n' ' ' | awk '{printf("  ipv4dst: \"%s\"\n  ipv6dst: \"%s\"\n", $2, $4);}'
 	echo "  cost: \"${tunnelcost}\""
 	echo
     fi
